@@ -7,7 +7,9 @@
 # =============================================================================
 model:
   # Default model to use (can be overridden with --model flag)
-  default: "anthropic/claude-opus-4.6"
+  # TODO: replace with your exact OpenRouter model IDs for go-to models.
+  # Example: "anthropic/claude-opus-4.6" or "openrouter-model-slug"
+  default: "openrouter/hunter-alpha"
   
   # Inference provider selection:
   #   "auto"       - Use Nous Portal if logged in, otherwise OpenRouter/env vars (default)
@@ -24,6 +26,13 @@ model:
   # API configuration (falls back to OPENROUTER_API_KEY env var)
   # api_key: "your-key-here"  # Uncomment to set here instead of .env
   base_url: "https://openrouter.ai/api/v1"
+
+fallback_model:
+  # Try healer-alpha first, then fallback to MiniMax when needed.
+  - provider: "openrouter"
+    model: "openrouter/healer-alpha"
+  - provider: "minimax"
+    model: "MiniMax-M2.5"
 
 # =============================================================================
 # OpenRouter Provider Routing (only applies when using OpenRouter)

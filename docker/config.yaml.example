@@ -1,0 +1,13 @@
+agent:
+  personality: "default"
+model:
+  # TODO: replace slugs below with your exact OpenRouter IDs (no spaces in model IDs).
+  # You said: hunter alpha / healer alpha are your primary options.
+  default: "openrouter/hunter-alpha"
+  provider: "openrouter"
+  base_url: "https://openrouter.ai/api/v1"
+fallback_model:
+  - provider: "openrouter"
+    model: "openrouter/healer-alpha"
+  - provider: "minimax"
+    model: "MiniMax-M2.5"

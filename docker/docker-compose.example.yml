@@ -1,0 +1,33 @@
+services:
+  hermes:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      args:
+        HERMES_REPO: https://github.com/NousResearch/hermes-agent.git
+        HERMES_BRANCH: main
+        INSTALL_BROWSER_TOOLS: "true"
+        INSTALL_SEARCH_FALLBACK: "true"
+        INSTALL_SPREADSHEET_EXTRAS: "true"
+    image: hermes-agent:rebuild-strategy
+    container_name: hermes-agent
+    restart: unless-stopped
+    user: "1000:1000"
+    environment:
+      HERMES_HOME: /home/hermes/.hermes
+    volumes:
+      - hermes-home:/home/hermes/.hermes
+      - ./artifacts:/home/hermes/.hermes/output
+    secrets:
+      - hermes_env
+      - hermes_config
+    command: ["hermes", "gateway"]
+
+volumes:
+  hermes-home:
+
+secrets:
+  hermes_env:
+    file: ./secrets/hermes.env
+  hermes_config:
+    file: ./secrets/hermes.config.yaml

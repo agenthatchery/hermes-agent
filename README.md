@@ -44,6 +44,12 @@ source ~/.bashrc    # reload shell (or: source ~/.zshrc)
 hermes              # start chatting!
 ```
 
+## Container Deployment (rebuild + secret-safe)
+
+Use this when you want a persistent `.hermes` home and secret mounts across redeploys.
+
+See `docker/README.md` for a ready-to-run Dockerfile and compose example.
+
 ---
 
 ## Getting Started
