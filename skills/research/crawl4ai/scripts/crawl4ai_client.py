@@ -9,7 +9,7 @@ API_URL = "http://10.42.82.6:11235/crawl"
 def crawl_url(url: str, max_chars: int):
     """Hits the local Crawl4AI docker service to extract clean markdown."""
     payload = {
-        "urls": url,
+        "urls": [url],
         "priority": 10,  # Ensure it is prioritized
     }
     
