@@ -474,6 +474,7 @@ class AIAgent:
         checkpoint_max_snapshots: int = 50,
         pass_session_id: bool = False,
         persist_session: bool = True,
+        **kwargs,
     ):
         """
         Initialize the AI Agent.
@@ -6619,6 +6620,7 @@ class AIAgent:
         task_id: str = None,
         stream_callback: Optional[callable] = None,
         persist_user_message: Optional[str] = None,
+        **kwargs,
     ) -> Dict[str, Any]:
         """
         Run a complete conversation with tool calling until completion.
