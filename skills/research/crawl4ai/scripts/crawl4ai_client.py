@@ -29,7 +29,12 @@ def crawl_url(url: str, max_chars: int):
             print(f"Error: No results returned for {url}. Raw response: {data}")
             sys.exit(1)
             
-        markdown_content = results[0].get("markdown", "")
+        markdown_data = results[0].get("markdown", "")
+        if isinstance(markdown_data, dict):
+            markdown_content = markdown_data.get("raw_markdown", "")
+        else:
+            markdown_content = markdown_data
+            
         if not markdown_content:
             markdown_content = results[0].get("content", "No markdown or content extracted.")
             
