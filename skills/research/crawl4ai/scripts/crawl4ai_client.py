@@ -15,7 +15,7 @@ def crawl_url(url: str, max_chars: int):
     
     headers = {
         "Content-Type": "application/json",
-        "Authorization": "Bearer "" # Empty token if auth isn't strict
+        "Authorization": "Bearer "  # Empty token if auth isn't strict
     }
     
     try:
